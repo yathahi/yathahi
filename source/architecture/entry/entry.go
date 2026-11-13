@@ -14,11 +14,13 @@ import (
 
 var option string
 
-//--------------------------------------------------------------------------
-// Official Entry To The Ecosystem
-//--------------------------------------------------------------------------
 
-func entry() {
+// ---------------------------------------------------------------
+// Main - Official Entry To The Ecosystem
+// ---------------------------------------------------------------
+
+func main() {
+	fmt.Println("Welcome to", library.ProjectName)
 	fmt.Println("Verifying Superuser Privileage...")
 	if os.Geteuid() == 0 {
 		fmt.Println("Successfull. Running with root privileges!")
@@ -26,10 +28,9 @@ func entry() {
 		fmt.Println("Running as a regular user.\nRun with sudo or as root user.\nExiting....")
 		os.Exit(0)
 	}
-
 	determineDeviceRole()
-
 }
+
 
 //--------------------------------------------------------------------------
 //	Deploying the User Selected Server Bootstrap
