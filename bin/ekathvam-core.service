@@ -1,0 +1,20 @@
+[Unit]
+Description=Ekathvam Core
+After=network.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+
+ExecStart=/opt/ekathvam/bin/ekathvam-core
+
+Restart=on-failure
+RestartSec=5
+
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
+
