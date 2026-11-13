@@ -31,7 +31,7 @@ To keep **Yathahi** under a single, unified **Apache License 2.0** and protect t
    ```bash
    git push origin feature/your-feature-name
    ```
-6. **Open a Pull Request:** Go to your fork on GitHub, click **Contribute** -> **Open pull request**, and submit it against the `main` branch of `[YourOrg]/[YourRepo]`.
+6. **Open a Pull Request:** Go to your fork on GitHub, click **Contribute** -> **Open pull request**, and submit it against the `main` branch of `yathahi/yathahi`.
 7. **Sign the CLA:** Follow the link posted by the bot in your Pull Request comments to complete the one-click digital signature.
 
 ## 3. Keeping Your Fork Up to Date
