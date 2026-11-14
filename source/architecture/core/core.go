@@ -65,7 +65,7 @@ func main() {
 
 func webEngineInstaller() {
 
-	err := library.PackageManager("https://commons.wikimedia.org/wiki/File:Ko%C5%9Bcielec_view_2.jpg")
+	err := library.PackageManager(library.WebEngineBinaryURL)
 	if err != nil {
 		slog.Error("Unable to Download web-engine", "error", err)
 	}

@@ -14,8 +14,7 @@ func UdsClient(data EntryData, socketPath string) {
 		conn, err := net.Dial("unix", socketPath)
 		if err != nil {
 			slog.Error("Unable to listen to UDS ", "error", err)
-		} else {
-			break
+			continue
 		}
 		defer conn.Close()
 
@@ -30,6 +29,7 @@ func UdsClient(data EntryData, socketPath string) {
 		if err != nil {
 			slog.Error("Unable to Encode or sent data  to UDS ", "error", err)
 		} else {
+			slog.Info("Data has sent to the Server")
 			break
 		}
 		if time.Since(start) >= 30*time.Second {

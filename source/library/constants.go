@@ -7,5 +7,6 @@ const (
 	EntrySocketPath string = "/tmp/yathahi.sock"
 
 	CoreBinaryURL string = "https://commons.wikimedia.org/wiki/File:Ko%C5%9Bcielec_view_2.jpg"
+	WebEngineBinaryURL string = "https://commons.wikimedia.org/wiki/File:Ko%C5%9Bcielec_view_2.jpg"
 	BinaryFolder  string = "/opt/yathahi/bin/"
 )

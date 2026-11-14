@@ -19,7 +19,6 @@ var option string
 // ---------------------------------------------------------------
 
 func main() {
-	fmt.Println("Welcome to", library.ProjectName)
 	fmt.Println("Verifying Superuser Privileage...")
 	if os.Geteuid() == 0 {
 		fmt.Println("Successfull. Running with root privileges!")
@@ -38,7 +37,7 @@ func determineDeviceRole() error {
 	fmt.Println("\nWelcome to", library.ProjectName)
 	fmt.Println("\nWhat new server you would like to make?\n\n1. Administrator\n2. Client\n3. Web Server\n4. DNS Server\n5. Exit\n\nSelect an option:")
 	for {
-		fmt.Print("Enter option (1-4): ")
+		fmt.Print("Enter option (1-5): ")
 		fmt.Scanln(&option)
 
 		switch option {
@@ -98,7 +97,7 @@ func coreInstall() {
 
 	err = library.PackageManager(library.CoreBinaryURL)
 	if err != nil {
-		fmt.Println("Unable to Download"+library.ProjectName+"-Core", "error", err)
+		fmt.Println("Unable to Download "+library.ProjectName+"-Core", "error", err)
 	}
 	cmd1 := exec.Command("tar", "--zstd", "-xf", "/tmp/"+library.ProjectName+"-core.tar.zst", "-C", "/tmp/")
 	output, err := cmd1.CombinedOutput()
@@ -120,7 +119,7 @@ func coreInstall() {
 	if err != nil {
 		fmt.Println("Unable to move "+library.ProjectName+"-core.service", err)
 	}
-	fmt.Printf("Installing "+library.ProjectName+".service %s", output)
+	fmt.Printf("Installing "+library.ProjectName+"-core.service %s", output)
 
 	cmd4 := exec.Command("systemctl", "daemon-reload")
 	output, err = cmd4.CombinedOutput()
