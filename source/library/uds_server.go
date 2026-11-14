@@ -9,9 +9,9 @@ import (
 
 func UdsServer(socketPath string, output chan<- EntryData) {
 	// Force-remove old file so it doesn't crash on rerun
-	slog.Error("UDS function just started")		// Temp-Debugger
+	slog.Error("UDS function just started") // Temp-Debugger
 	os.RemoveAll(socketPath)
-	slog.Error("UDS Removed all old sockets")	// Temp-Debugger
+	slog.Error("UDS Removed all old sockets") // Temp-Debugger
 
 	// Create the listening socket
 	listener, err := net.Listen("unix", socketPath)
@@ -38,6 +38,6 @@ func UdsServer(socketPath string, output chan<- EntryData) {
 	slog.Info("Entry Data parsed successfully!", "service", data.Service, "additional", data.Additional)
 
 	// Return the populated struct
-	 output <- data
-	 slog.Info("Server reterned the populated data to the channel")
+	output <- data
+	slog.Info("Server reterned the populated data to the channel")
 }

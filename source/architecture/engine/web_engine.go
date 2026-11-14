@@ -20,7 +20,7 @@ func main() {
 	}
 	slog.Info("Success!")
 
-	cmd1 := exec.Command("lxc-attach", "-n", library.ProjectName,"--", "systemctl", "enable", "--now", "nginx")
+	cmd1 := exec.Command("lxc-attach", "-n", library.ProjectName, "--", "systemctl", "enable", "--now", "nginx")
 	output, err = cmd1.CombinedOutput()
 	if err != nil {
 		slog.Error("Failed: %s\n Error: %v\n", string(output), err)

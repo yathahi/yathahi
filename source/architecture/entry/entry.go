@@ -1,19 +1,18 @@
 package main
 
 import (
-	"yathahi/source/library"
 	"fmt"
 	"os"
 	"os/exec"
 	"regexp"
 	"strings"
+	"yathahi/source/library"
 )
 
 //const containerName = ""+library.ProjectName+"" // later user custom container name can be added for multi servers with incrementing value like ekathvam-web-1 ekathvam-web-2 and so in
 //const containerPath = "/"+library.ProjectName+"/containers"
 
 var option string
-
 
 // ---------------------------------------------------------------
 // Main - Official Entry To The Ecosystem
@@ -30,7 +29,6 @@ func main() {
 	}
 	determineDeviceRole()
 }
-
 
 //--------------------------------------------------------------------------
 //	Deploying the User Selected Server Bootstrap

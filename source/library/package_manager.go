@@ -1,16 +1,16 @@
 package library
 
 import (
+	"errors"
 	"fmt"
+	"io"
+	"net/http"
+	"net/url"
 	"os"
 	"os/exec"
-	"net/url"
-	"net/http"
-	"io"
 	"path"
 	"path/filepath"
 	"strings"
-	"errors"
 )
 
 // Abbrevations
@@ -26,9 +26,8 @@ import (
 // Package Manager
 //--------------------------------------------------------------------------------
 
-
 func PackageManager(pkg string) error {
-	
+
 	pkgType := pkgtypeparser(pkg)
 	if pkgType == "1" {
 		err := linuxPackage(pkg)
@@ -50,7 +49,7 @@ func pkgtypeparser(input string) string {
 
 	// Attempt to parse the string as a URL
 	u, err := url.Parse(input)
-	
+
 	// If it fails basic parsing, it's definitely just a string
 	if err != nil {
 		return "1"
@@ -93,7 +92,7 @@ func linuxPackage(pkgName string) error {
 		cmd = exec.Command("pkg", "install", "-y", pkgName)
 	case "yum":
 		cmd = exec.Command("yum", "install", "-y", pkgName)
-		
+
 	// --- Bonus Package Managers You Missed ---
 	case "brew": // Homebrew for Linux (increasingly common on Ubuntu/Fedora)
 		cmd = exec.Command("brew", "install", pkgName)
@@ -101,7 +100,7 @@ func linuxPackage(pkgName string) error {
 		cmd = exec.Command("swupd", "bundle-add", pkgName)
 	case "nix-env": // Nix package manager (used on NixOS and standalone)
 		cmd = exec.Command("nix-env", "-iA", pkgName)
-		
+
 	default:
 		return fmt.Errorf("unsupported package manager: %s", pm)
 	}
@@ -110,7 +109,7 @@ func linuxPackage(pkgName string) error {
 	output, err := cmd.CombinedOutput()
 	if err != nil {
 		return fmt.Errorf("failed to install %s using %s: %v\nOutput: %s", pkgName, pm, err, string(output))
-		
+
 	}
 
 	fmt.Printf("Successfully processed %s via %s\n", pkgName, pm)
@@ -121,10 +120,9 @@ func linuxPackage(pkgName string) error {
 //	Get Package Manager - Find The Supported Package Manager.
 //--------------------------------------------------------------------------------
 
-
-func getPm () string {
+func getPm() string {
 	fmt.Println("Analysing the pacakage manager.")
-	for _, pm := range []string{"apt","dnf","pacman","zypper","apk","pkg","yum"} {
+	for _, pm := range []string{"apt", "dnf", "pacman", "zypper", "apk", "pkg", "yum"} {
 		if _, err := exec.LookPath(pm); err == nil {
 			return pm
 		}
@@ -132,12 +130,11 @@ func getPm () string {
 	return "unknown"
 }
 
-
 //--------------------------------------------------------------------------------
 // URL Package - Downloads A package From A URL
 //--------------------------------------------------------------------------------
 
- func urlPkg(fileURL string) error {
+func urlPkg(fileURL string) error {
 	// 1. Parse the URL string to cleanly extract its path component
 	parsedURL, err := url.Parse(fileURL)
 	if err != nil {
@@ -182,6 +179,4 @@ func getPm () string {
 	fmt.Printf("Downloading and auto-saving to: %s\n", finalSavePath)
 	_, err = io.Copy(out, resp.Body)
 	return err
- }
-
-
+}

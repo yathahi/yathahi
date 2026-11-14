@@ -1,13 +1,13 @@
 package main
 
 import (
-	"yathahi/source/library"
 	"errors"
 	"fmt"
 	"log/slog"
 	"os"
 	"os/exec"
 	"strings"
+	"yathahi/source/library"
 )
 
 const stateFilePath = "/var/lib/yathahi/state.json"
@@ -16,9 +16,9 @@ func main() {
 	slog.SetDefault(slog.New(slog.NewTextHandler(os.Stdout, nil)))
 	slog.Error("The 1socket path is ", "output", library.EntrySocketPath) // Temp-Debugger
 	requestsChannel := make(chan library.EntryData)
-	slog.Error("The channel has just Created!")				// Temp-Debugger - suspect this is not running something wrong with channel creation , function is just stuck here
+	slog.Error("The channel has just Created!") // Temp-Debugger - suspect this is not running something wrong with channel creation , function is just stuck here
 
-	go library.UdsServer(library.EntrySocketPath, requestsChannel) 
+	go library.UdsServer(library.EntrySocketPath, requestsChannel)
 	slog.Error("The 2socket path is ", "output", library.EntrySocketPath) // Temp-Debugger
 
 	go func() {
@@ -97,7 +97,7 @@ func webEngineInstaller() {
 	if err != nil {
 		slog.Error("Unable to enable web-engine.service", "error", err)
 	}
-	slog.Info("Enabling "+library.ProjectName+"-core Service")
+	slog.Info("Enabling " + library.ProjectName + "-core Service")
 	cmd5 := exec.Command("systemctl", "is-active", "web-engine.service")
 	output, err = cmd5.CombinedOutput()
 	status := strings.TrimSpace(string(output))
@@ -108,13 +108,11 @@ func webEngineInstaller() {
 		slog.Info("Web-Engine is running actively.")
 	}
 
-
 }
 
 //--------------------------------------------------------------------------
 //	Initiating The Container
 //--------------------------------------------------------------------------
-
 
 func Containersetup() {
 	slog.Info("Initializing LXC Deployment...", "container", library.ProjectName)
@@ -251,5 +249,3 @@ func configureUfw() error {
 	slog.Info("UFW configuration complete.")
 	return nil
 }
-
-
