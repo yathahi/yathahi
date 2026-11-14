@@ -1,5 +1,9 @@
-# Go build outputs
-#/bin/
+# Compiled Go binaries
+source/architecture/core/Yathahi-core
+source/architecture/engine/web-engine
+source/architecture/entry/entry
+/bin/
+/build/
 /dist/
 *.exe
 *.out
@@ -14,8 +18,13 @@
 *.p12
 *.pfx
 
-# Editor and OS files
+# Editor and OS files (Neovim, VS Code, JetBrains, OS)
+*.swp
+*.swo
+*~
+.netrwhist
 .idea/
 .vscode/
 .DS_Store
 Thumbs.db
+
