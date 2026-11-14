@@ -63,8 +63,6 @@ Expect incomplete features and breaking changes until the project reaches a more
 
 ## Project Structure
 
-## Project Structure
-
 The project is written in Go and organized around its core architectural components and shared internal libraries:
 
 ```text
@@ -77,19 +75,18 @@ Yathahi/
 
 *Note: Because Yathahi is under active development, internal file paths and directory layouts are highly volatile and may change frequently.*
 
-
 ## Contributing
 
 Contributions, discussions, suggestions, and technical feedback are welcome.
 
 The long-term goal is to build an infrastructure ecosystem through collaboration, interoperability, and well-defined technical foundations.
 
-* Read our [Contribution Guidelines](CONTRIBUTING.md) to learn how to fork the repository, sign our one-click Contributor Assignment Agreement, and submit a Pull Request.
+* Read our [Contribution Guidelines](CONTRIBUTING.md) to learn how to fork the repository and submit a Pull Request (no CLA required).
 * View all project contributors in [CONTRIBUTORS.md](CONTRIBUTORS.md).
 
 ## License
 
-Yathahi is licensed under the **Apache License 2.0**. See the [LICENSE](LICENSE) and [NOTICE](NOTICE) files for details.
+Yathahi is permanently licensed under the **Apache License 2.0**. See the [LICENSE](LICENSE) and [NOTICE](NOTICE) files for details.
 
 Copyright 2026 **J Aromal**.
 
