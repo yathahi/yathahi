@@ -15,16 +15,17 @@ Yathahi is permanently licensed under the **Apache License 2.0**, and we do **no
 1. **Fork the Repository:** Click the **Fork** button at the top right of the main repository page to create your own copy.
 2. **Clone Your Fork:**
    ```bash
-   git clone https://github.com<your-username>/yathahi.git
+   git clone https://github.com/<your-username>/yathahi.git
    cd yathahi
-   
    ```
 3. **Create a New Branch:** Always make your changes on a dedicated branch rather than `main`:
    ```bash
    git checkout -b feature/your-feature-name
    ```
-4. **Make Your Changes & Commit:** Write clean, well-tested code and commit it using your verified GitHub email so your profile gets full credit:
+4. **Format, Test & Commit:** Format your Go code, verify that all tests pass (our automated CI checks these on every Pull Request), and commit using your verified GitHub email so your profile gets full credit:
    ```bash
+   gofmt -w .
+   go test -race ./...
    git add .
    git commit -m "Describe your change clearly"
    ```
