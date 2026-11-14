@@ -1,4 +1,4 @@
-# Yatahi — Specification
+# Yathahi — Specification
 
 **Document version:** 0.0.1-alpha  
 **Document type:** System specification  
@@ -6,11 +6,11 @@
 
 ## 1. Purpose
 
-This document defines the intended capabilities, responsibilities, behavioural requirements and boundaries of Yatahi. It translates the goals described in the Project Vision and the component responsibilities described in the Architecture into requirements that can guide implementation and later be verified through tests and demonstrations.
+This document defines the intended capabilities, responsibilities, behavioural requirements and boundaries of Yathahi. It translates the goals described in the Project Vision and the component responsibilities described in the Architecture into requirements that can guide implementation and later be verified through tests and demonstrations.
 
-This specification describes what Yatahi is expected to do. It does not claim that every requirement is already implemented, and it does not prescribe every internal implementation choice.
+This specification describes what Yathahi is expected to do. It does not claim that every requirement is already implemented, and it does not prescribe every internal implementation choice.
 
-The specification applies to Yatahi whether it runs on one computer hosting several services, a small home laboratory, a small office, or a much larger infrastructure distributed across devices and locations.
+The specification applies to Yathahi whether it runs on one computer hosting several services, a small home laboratory, a small office, or a much larger infrastructure distributed across devices and locations.
 
 ## 2. Requirement language
 
@@ -26,19 +26,19 @@ A requirement in this document describes intended system behaviour. It must not 
 
 ### 3.1 Scale independence
 
-- **SYS-001:** Yatahi MUST be usable on a single device, including a computer that runs Yatahi and hosts multiple services.
-- **SYS-002:** Yatahi MUST NOT require a second device, a separate server, or a distributed network for a single-device deployment to be meaningful.
-- **SYS-003:** Yatahi MUST support small multi-device environments, including home laboratories and small offices.
-- **SYS-004:** Yatahi's design MUST allow an environment to expand across devices and locations without changing the fundamental responsibilities of Entry, Core, Engine and Administrator.
-- **SYS-005:** A small deployment MUST NOT be required to adopt unnecessary complexity solely because Yatahi can also support large deployments.
+- **SYS-001:** Yathahi MUST be usable on a single device, including a computer that runs Yathahi and hosts multiple services.
+- **SYS-002:** Yathahi MUST NOT require a second device, a separate server, or a distributed network for a single-device deployment to be meaningful.
+- **SYS-003:** Yathahi MUST support small multi-device environments, including home laboratories and small offices.
+- **SYS-004:** Yathahi's design MUST allow an environment to expand across devices and locations without changing the fundamental responsibilities of Entry, Core, Engine and Administrator.
+- **SYS-005:** A small deployment MUST NOT be required to adopt unnecessary complexity solely because Yathahi can also support large deployments.
 
 ### 3.2 Infrastructure and service management
 
-- **SYS-006:** Yatahi MUST allow users to request the creation and management of services without requiring them to perform every underlying infrastructure task manually.
-- **SYS-007:** Yatahi MUST keep the responsibilities of collecting user requirements, managing device resources, and operating specialised services separated between the appropriate components.
-- **SYS-008:** Yatahi MUST maintain a distinction between infrastructure management and the independent operation of the services deployed through it.
-- **SYS-009:** The underlying systems and services established with Yatahi SHOULD continue to operate independently if Yatahi's management components become unavailable or are removed, to the extent supported by those underlying systems.
-- **SYS-010:** The absence of Yatahi MUST NOT, by itself, be designed to make an otherwise independently operating service stop merely because Yatahi is no longer managing it.
+- **SYS-006:** Yathahi MUST allow users to request the creation and management of services without requiring them to perform every underlying infrastructure task manually.
+- **SYS-007:** Yathahi MUST keep the responsibilities of collecting user requirements, managing device resources, and operating specialised services separated between the appropriate components.
+- **SYS-008:** Yathahi MUST maintain a distinction between infrastructure management and the independent operation of the services deployed through it.
+- **SYS-009:** The underlying systems and services established with Yathahi SHOULD continue to operate independently if Yathahi's management components become unavailable or are removed, to the extent supported by those underlying systems.
+- **SYS-010:** The absence of Yathahi MUST NOT, by itself, be designed to make an otherwise independently operating service stop merely because Yathahi is no longer managing it.
 
 ## 4. Entry requirements
 
@@ -46,7 +46,7 @@ Entry is the starting point directly installed and invoked by the user. It is re
 
 ### 4.1 Distribution and first use
 
-- **ENT-001:** Entry MUST be the only Yatahi executable that a user is expected to install manually as the starting point for using Yatahi on a device. Other required Yatahi components, including Core and specialised Engines, are established or installed through Yatahi rather than requiring the user to install each one separately.
+- **ENT-001:** Entry MUST be the only Yathahi executable that a user is expected to install manually as the starting point for using Yathahi on a device. Other required Yathahi components, including Core and specialised Engines, are established or installed through Yathahi rather than requiring the user to install each one separately.
 - **ENT-002:** Entry MUST be usable regardless of which type of service the user intends to run.
 - **ENT-003:** On use, Entry MUST determine whether a functioning Core is already available on the device.
 - **ENT-004:** If Core is not available, Entry MUST be capable of securely establishing Core on that device, including the setup needed to enable and start it.
@@ -68,9 +68,9 @@ Core is the central management component on an individual device. It connects in
 
 ### 5.1 Container lifecycle
 
-- **CORE-001:** Core MUST manage the lifecycle of containers that are managed by Yatahi on its device.
+- **CORE-001:** Core MUST manage the lifecycle of containers that are managed by Yathahi on its device.
 - **CORE-002:** Core MUST be able to create a managed container when a requested service requires one.
-- **CORE-003:** Core MUST be able to remove a container that belongs to Yatahi's managed environment when its removal is authorised and appropriate.
+- **CORE-003:** Core MUST be able to remove a container that belongs to Yathahi's managed environment when its removal is authorised and appropriate.
 - **CORE-004:** Core MUST keep container lifecycle management separate from the service-specific operation performed inside a container.
 - **CORE-005:** Core MUST NOT enter managed containers or operate the service internals inside them as part of its normal service-management responsibility.
 
@@ -85,7 +85,7 @@ Core is the central management component on an individual device. It connects in
 
 ### 5.3 Device records, state and logs
 
-- **CORE-012:** Core MUST maintain an accurate record of the Yatahi-managed containers that exist on its device.
+- **CORE-012:** Core MUST maintain an accurate record of the Yathahi-managed containers that exist on its device.
 - **CORE-013:** Core MUST maintain records of the Engines available on the device and the containers assigned to each Engine.
 - **CORE-014:** Core MUST maintain a record of the services each assigned Engine is responsible for managing.
 - **CORE-015:** Core MUST maintain relevant operational state and records for its managed containers, Engines and services.
@@ -110,7 +110,7 @@ An Engine is a specialised component responsible for a particular service or wor
 
 - **ENG-001:** Each Engine MUST have a defined service or workload responsibility.
 - **ENG-002:** An Engine MUST perform the service-specific work required to install, configure, start, operate, monitor and maintain the service within its assigned container or containers, according to its purpose and capabilities.
-- **ENG-003:** An Engine MUST interpret the common instructions supplied through Yatahi according to its own service-specific knowledge.
+- **ENG-003:** An Engine MUST interpret the common instructions supplied through Yathahi according to its own service-specific knowledge.
 - **ENG-004:** An Engine MUST use the request and configuration information provided to it by Core when establishing or changing its assigned service.
 - **ENG-005:** An Engine MUST report relevant service state, completion results, failures and unexpected conditions to Core.
 
@@ -150,13 +150,13 @@ Administrator is the logical authority responsible for the infrastructure as a w
 
 ### 7.3 Multiple Administrators
 
-- **ADM-011:** Yatahi MUST support multiple Administrators for an infrastructure.
+- **ADM-011:** Yathahi MUST support multiple Administrators for an infrastructure.
 - **ADM-012:** Administrators belonging to the same infrastructure MUST have equal rights and capabilities under the current architecture.
 - **ADM-013:** The infrastructure's continued governance MUST NOT depend permanently on one specific person or one physical device acting as its sole Administrator.
 
 ### 7.4 Administrator graphical interface
 
-- **ADM-014:** Yatahi MUST provide its full graphical infrastructure administration and customisation experience through the Administrator interface, rather than making Entry the full administration application.
+- **ADM-014:** Yathahi MUST provide its full graphical infrastructure administration and customisation experience through the Administrator interface, rather than making Entry the full administration application.
 - **ADM-015:** The Administrator graphical interface SHOULD allow authorised users to understand the participating devices, services, their states and their relationships.
 - **ADM-016:** The Administrator graphical interface SHOULD provide a way to configure and customise the infrastructure and its services through the authority and coordination provided by Administrator.
 - **ADM-017:** Where a proposed change may cause a conflict, failure or security concern, the interface SHOULD make the concern understandable before the change is applied, where that can be determined.
@@ -171,7 +171,7 @@ This section defines the required communication capabilities without choosing a 
 - **COM-004:** The common Core–Engine communication method MUST allow new specialised Engines to be introduced without requiring Core to understand each Engine's service-specific operating procedures.
 - **COM-005:** Communications that request privileged operations MUST be authenticated and authorised by the component responsible for the requested operation.
 - **COM-006:** Communication failures, invalid requests and rejected instructions MUST be handled without silently treating an unsuccessful operation as successful.
-- **COM-007:** Yatahi MUST support coordination between services and devices when a requested outcome depends on more than one service or device.
+- **COM-007:** Yathahi MUST support coordination between services and devices when a requested outcome depends on more than one service or device.
 - **COM-008:** Cross-service or cross-device coordination MUST respect the responsibilities and security boundaries of the involved Core, Engines and Administrator.
 - **COM-009:** An Engine MUST NOT bypass another Engine's workload boundary merely because a service-to-service interaction is required.
 
@@ -179,7 +179,7 @@ The exact routing of cross-service requests—including when a request is handle
 
 ## 9. Security and trust requirements
 
-Yatahi's security responsibilities are layered across infrastructure, device and workload boundaries.
+Yathahi's security responsibilities are layered across infrastructure, device and workload boundaries.
 
 - **SEC-001:** Administrator MUST provide infrastructure-wide and network-level protection.
 - **SEC-002:** Core MUST provide device-level protection and protect its own management responsibilities and records.
@@ -190,7 +190,7 @@ Yatahi's security responsibilities are layered across infrastructure, device and
 - **SEC-007:** Administrator MUST be able to coordinate containment of a compromised device at the infrastructure level.
 - **SEC-008:** Core MUST authenticate and authorise Administrator instructions before carrying out privileged device-level actions.
 - **SEC-009:** The initial establishment of Core by Entry MUST be performed securely. The distribution and setup process MUST provide a trustworthy basis for installing and starting Core.
-- **SEC-010:** Yatahi's additional security capabilities SHOULD complement, rather than unnecessarily replace or disable, the security controls provided by the underlying operating systems, container environment and services.
+- **SEC-010:** Yathahi's additional security capabilities SHOULD complement, rather than unnecessarily replace or disable, the security controls provided by the underlying operating systems, container environment and services.
 
 ## 10. Service lifecycle and operational requirements
 
@@ -201,15 +201,15 @@ Yatahi's security responsibilities are layered across infrastructure, device and
 - **OPS-005:** Relevant service and workload status MUST be reportable from Engine to Core.
 - **OPS-006:** Relevant device and managed-environment status MUST be reportable from Core to Administrator.
 - **OPS-007:** A service, Engine or container failure MUST NOT be recorded or presented as a successful operation merely because a request was accepted.
-- **OPS-008:** Yatahi SHOULD identify unexpected changes or failures in managed resources and make the relevant condition available to the responsible component.
+- **OPS-008:** Yathahi SHOULD identify unexpected changes or failures in managed resources and make the relevant condition available to the responsible component.
 - **OPS-009:** Corrective action and recovery MUST respect the authority and workload boundaries defined in this specification.
-- **OPS-010:** Yatahi SHOULD automate safe, well-understood maintenance and recovery actions while preserving appropriate human visibility and control for consequential actions.
+- **OPS-010:** Yathahi SHOULD automate safe, well-understood maintenance and recovery actions while preserving appropriate human visibility and control for consequential actions.
 
 ## 11. Availability and independent operation
 
 - **AVL-001:** The loss or removal of Entry after Core has been established MUST NOT, by itself, stop Core or the services managed through it.
-- **AVL-002:** The loss or removal of Yatahi's management components MUST NOT be designed to disable independently operating services solely because their Yatahi management layer is unavailable.
-- **AVL-003:** When Yatahi's management functions are unavailable, users may lose the ability to submit new Yatahi-managed requests, coordinate infrastructure changes, receive Yatahi monitoring and use Yatahi-specific security and maintenance capabilities.
+- **AVL-002:** The loss or removal of Yathahi's management components MUST NOT be designed to disable independently operating services solely because their Yathahi management layer is unavailable.
+- **AVL-003:** When Yathahi's management functions are unavailable, users may lose the ability to submit new Yathahi-managed requests, coordinate infrastructure changes, receive Yathahi monitoring and use Yathahi-specific security and maintenance capabilities.
 - **AVL-004:** The exact behaviour of pending operations, disconnected Cores, unavailable Administrators and recovery after reconnection MUST be defined in a later availability and recovery specification.
 
 ## 12. Boundaries and exclusions
@@ -244,4 +244,4 @@ These subjects may become separate protocol, security, interface, lifecycle or t
 
 Requirements in this document should become the basis for implementation tests, integration tests and demonstrations. Where practical, work should be traceable to the requirement identifiers used above. A requirement should not be considered satisfied solely because a related component or feature exists; its expected behaviour and boundaries must also be demonstrated.
 
-This document records the specification at version **0.0.1-alpha**. It is an initial statement of intended behaviour, not a claim that all details are final. Requirements may be clarified, expanded, replaced or removed as Yatahi develops. Changes should be reflected in the document's version history and reviewed against the Project Vision and Architecture so that the three documents remain consistent.
+This document records the specification at version **0.0.1-alpha**. It is an initial statement of intended behaviour, not a claim that all details are final. Requirements may be clarified, expanded, replaced or removed as Yathahi develops. Changes should be reflected in the document's version history and reviewed against the Project Vision and Architecture so that the three documents remain consistent.

@@ -1,15 +1,15 @@
-# Yatahi — Architecture
+# Yathahi — Architecture
 
 **Document version:** 0.0.1-alpha  
 **Document type:** Architecture
 
 ## 1. Purpose
 
-This document describes the architecture of Yatahi: its main components, the responsibilities each component owns, and how they work together.
+This document describes the architecture of Yathahi: its main components, the responsibilities each component owns, and how they work together.
 
-Yatahi is built around four components: **Entry, Core, Engine and Administrator**. Each has a distinct role and a defined area of responsibility. The architecture separates infrastructure-wide authority from device management and service-specific work, so that no single component needs to understand or control every part of the system.
+Yathahi is built around four components: **Entry, Core, Engine and Administrator**. Each has a distinct role and a defined area of responsibility. The architecture separates infrastructure-wide authority from device management and service-specific work, so that no single component needs to understand or control every part of the system.
 
-This architecture is intended to apply across different scales. Yatahi may operate on one computer running several services, in a small home laboratory, across a handful of devices, or across a large and geographically distributed infrastructure. The scale may change, but the responsibilities and boundaries described here remain the foundation.
+This architecture is intended to apply across different scales. Yathahi may operate on one computer running several services, in a small home laboratory, across a handful of devices, or across a large and geographically distributed infrastructure. The scale may change, but the responsibilities and boundaries described here remain the foundation.
 
 This document explains the logical architecture and its responsibilities. It is not a specification of communication protocols, authentication mechanisms, container technology or other implementation details.
 
@@ -17,8 +17,8 @@ This document explains the logical architecture and its responsibilities. It is 
 
 The four components are:
 
-- **Entry** — provides the initial entry point and starts the Yatahi environment.
-- **Core** — manages the Yatahi environment on an individual device, including its containers and Engines.
+- **Entry** — provides the initial entry point and starts the Yathahi environment.
+- **Core** — manages the Yathahi environment on an individual device, including its containers and Engines.
 - **Engine** — performs and maintains a specialised service or workload within its assigned container or containers.
 - **Administrator** — coordinates the wider infrastructure and is responsible for infrastructure-level authority and network security.
 
@@ -43,19 +43,19 @@ The diagram represents the logical responsibilities and communication relationsh
 
 ## 3. Entry
 
-Entry is the initial entry point for Yatahi on a device. Its responsibility is to initiate the Yatahi environment and hand over operation to Core.
+Entry is the initial entry point for Yathahi on a device. Its responsibility is to initiate the Yathahi environment and hand over operation to Core.
 
 Entry is not the ongoing device manager, service operator or infrastructure-wide authority. Once it has completed its initial role and handed over to Core, the continuing responsibilities of managing the device and its workloads belong to the appropriate components.
 
 ## 4. Core
 
-Core is the central management component of Yatahi on an individual device. It connects the infrastructure-level direction provided by Administrator with the specialised work performed by Engines.
+Core is the central management component of Yathahi on an individual device. It connects the infrastructure-level direction provided by Administrator with the specialised work performed by Engines.
 
-Core is responsible for the device's managed Yatahi environment. It understands which managed containers and Engines exist on the device, how they are assigned, and what services they are responsible for.
+Core is responsible for the device's managed Yathahi environment. It understands which managed containers and Engines exist on the device, how they are assigned, and what services they are responsible for.
 
 ### 4.1 Container management
 
-Core is responsible for the lifecycle of Yatahi-managed containers. It can create containers when they are needed and remove containers that are managed by Yatahi when they are no longer required.
+Core is responsible for the lifecycle of Yathahi-managed containers. It can create containers when they are needed and remove containers that are managed by Yathahi when they are no longer required.
 
 Core does not operate the services inside those containers. Creating, removing and managing the allocation of a container is different from entering it or accessing the workload that runs inside it. Core's responsibility is container management and coordination, not service operation.
 
@@ -67,7 +67,7 @@ Core does not need to understand the service-specific procedures of an Engine. I
 
 ### 4.3 Device records and operational state
 
-Core maintains the records needed to understand and manage its device's Yatahi environment. These include:
+Core maintains the records needed to understand and manage its device's Yathahi environment. These include:
 
 - Which managed containers exist.
 - Which Engines are present on the device.
@@ -93,7 +93,7 @@ When Core detects a concern that may affect the wider infrastructure, it reports
 
 Core:
 
-- Manages the lifecycle of Yatahi-managed containers, but does not access their service internals.
+- Manages the lifecycle of Yathahi-managed containers, but does not access their service internals.
 - Installs and assigns Engines, but does not perform their specialised service work.
 - Coordinates Engines through their shared communication method, but does not need to understand each Engine's internal service procedures.
 - Manages and protects its own device environment, while reporting wider infrastructure concerns to Administrator.
@@ -130,7 +130,7 @@ This keeps service-level knowledge and workload protection with the component th
 
 ## 6. Administrator
 
-Administrator is the logical authority responsible for coordinating Yatahi's wider infrastructure. It operates above individual devices and their Cores, bringing participating devices and services together as one managed environment.
+Administrator is the logical authority responsible for coordinating Yathahi's wider infrastructure. It operates above individual devices and their Cores, bringing participating devices and services together as one managed environment.
 
 Administrator communicates with the Cores of participating devices, coordinates infrastructure-wide decisions and directs changes that involve more than an individual device. It does not need to know how each service is installed or configured; those responsibilities remain with the relevant Engines, coordinated through Core.
 
@@ -148,7 +148,7 @@ The purpose is to limit the effect that a compromised device can have on the res
 
 ### 6.3 Multiple Administrators
 
-Yatahi supports multiple Administrators with equal rights and capabilities. Infrastructure-wide authority should not depend permanently on one person or one physical device. Multiple Administrators can share responsibility for coordinating and governing the infrastructure.
+Yathahi supports multiple Administrators with equal rights and capabilities. Infrastructure-wide authority should not depend permanently on one person or one physical device. Multiple Administrators can share responsibility for coordinating and governing the infrastructure.
 
 ### 6.4 Administrator's boundaries
 
@@ -158,9 +158,9 @@ Administrator is responsible for infrastructure-wide coordination and network-le
 
 The components cooperate while retaining their separate responsibilities. The following examples illustrate their relationship at a conceptual level.
 
-### 7.1 Starting Yatahi on a device
+### 7.1 Starting Yathahi on a device
 
-Entry initiates the Yatahi environment and hands over to Core. Core then takes responsibility for managing the device's Yatahi environment. The initial role of Entry is separate from Core's continuing management responsibilities.
+Entry initiates the Yathahi environment and hands over to Core. Core then takes responsibility for managing the device's Yathahi environment. The initial role of Entry is separate from Core's continuing management responsibilities.
 
 ### 7.2 Providing a service
 
@@ -185,7 +185,7 @@ Each component contributes to protection and recovery within its own area of res
 
 ## 8. Separation of responsibility and security
 
-Yatahi's architecture separates responsibility across three operational levels:
+Yathahi's architecture separates responsibility across three operational levels:
 
 | Level | Component | Primary responsibility |
 |---|---|---|
@@ -201,20 +201,20 @@ The intended result is containment: a problem in one workload should be handled 
 
 The architecture is not reserved for large organisations or complex deployments. It is intended to accommodate a range of environments, including:
 
-- One computer running Yatahi and hosting several services.
+- One computer running Yathahi and hosting several services.
 - A small home laboratory with two or more devices.
 - Personal servers, hobby projects and small offices.
 - Research environments and larger collections of devices.
 - Infrastructure distributed across many locations and countries.
 
-A small deployment should be able to use Yatahi without being treated as an incomplete version of a large enterprise environment. A large deployment should be able to grow across many devices and locations without changing the fundamental separation of responsibilities.
+A small deployment should be able to use Yathahi without being treated as an incomplete version of a large enterprise environment. A large deployment should be able to grow across many devices and locations without changing the fundamental separation of responsibilities.
 
 The architecture describes the roles needed to manage infrastructure at different scales. It does not require every deployment to use the same number of devices, services, Engines or Administrators.
 
 ## 10. Architectural boundaries and evolution
 
-The responsibilities described in this document define the current architectural understanding of Yatahi. They establish which component owns each area of work and the boundaries that should remain clear as the implementation develops.
+The responsibilities described in this document define the current architectural understanding of Yathahi. They establish which component owns each area of work and the boundaries that should remain clear as the implementation develops.
 
 The document does not prescribe specific protocols, data formats, authentication algorithms, container technologies, service implementations or physical deployment layouts. Those details belong in more focused technical documentation when they are defined.
 
-This document records the architecture at version **0.0.1-alpha**. The architecture may evolve as Yatahi develops. Future versions may refine component responsibilities, relationships and boundaries while preserving a visible history of those changes.
+This document records the architecture at version **0.0.1-alpha**. The architecture may evolve as Yathahi develops. Future versions may refine component responsibilities, relationships and boundaries while preserving a visible history of those changes.
