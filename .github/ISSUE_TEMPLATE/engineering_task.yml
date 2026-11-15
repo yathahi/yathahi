@@ -1,0 +1,46 @@
+name: Engineering Task
+description: Track engineering work, maintenance, and technical improvements.
+labels:
+  - engineering
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template to track engineering work within Yathahi.
+        Keep the description concise. Additional technical details are optional.
+
+  - type: textarea
+    id: objective
+    attributes:
+      label: Objective
+      description: What needs to be implemented, improved, or investigated?
+      placeholder: Describe the intended outcome.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: component
+    attributes:
+      label: Related Component
+      description: Which part of Yathahi does this task concern?
+      multiple: true
+      options:
+        - Entry
+        - Core
+        - Engine
+        - Cross-component
+        - Project-wide
+        - Not applicable
+
+  - type: textarea
+    id: implementation
+    attributes:
+      label: Implementation Notes
+      description: Relevant technical details or possible approaches.
+      placeholder: Optional implementation considerations.
+
+  - type: textarea
+    id: references
+    attributes:
+      label: References
+      description: Related issues, discussions, documentation, or resources.
