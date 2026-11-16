@@ -1,6 +1,12 @@
 # Yathahi
 
-**Unity through interoperability.**
+<p align="center">
+  <img src="assets/yathahi-text-logo.inkscape.svg" alt="Yathahi Logo" width="180">
+</p>
+
+<p align="center">
+  <strong>Unity through interoperability.</strong>
+</p>
 
 Yathahi is an infrastructure creation, management, orchestration, security, and maintenance project.
 
