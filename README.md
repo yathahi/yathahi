@@ -1,7 +1,7 @@
 # Yathahi
 
 <p align="center">
-  <img src="assets/yathahi-text-logo.inkscape.svg" alt="Yathahi Logo" width="180">
+  <img src="assets/logos/yathahi-text-logo.inkscape.svg" alt="Yathahi Logo" width="180">
 </p>
 
 <p align="center">
