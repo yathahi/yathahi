@@ -6,7 +6,17 @@ const (
 
 	EntrySocketPath string = "/tmp/yathahi.sock"
 
-	CoreBinaryURL      string = "https://commons.wikimedia.org/wiki/File:Ko%C5%9Bcielec_view_2.jpg"
-	WebEngineBinaryURL string = "https://commons.wikimedia.org/wiki/File:Ko%C5%9Bcielec_view_2.jpg"
-	BinaryFolder       string = "/opt/yathahi/bin/"
+	BinaryURL string = "https://github.com/yathahi/yathahi/bin/"
+
+	BinaryFolder string = "/opt/yathahi/bin/"
+
+	CoreServiceName string = "yathahi-core.service"
+
+	EntryLogFile string = "/var/log/yathahi/entry.log"
+
+	CorePackageName          string = "yathahi-core"
+	WebPackageName           string = "web-engine"
+	AdministratorPackageName string = "administrator-engine"
+	ClientPackageName        string = "client-engine"
+	DnsPackageName           string = "dns-engine"
 )

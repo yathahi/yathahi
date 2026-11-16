@@ -4,6 +4,7 @@ import (
 	"errors"
 	"fmt"
 	"io"
+	"log/slog"
 	"net/http"
 	"net/url"
 	"os"
@@ -28,6 +29,7 @@ import (
 
 func PackageManager(pkg string) error {
 
+	slog.Info("Package manager has been initialized! for installing the package", slog.String("pkg", pkg))
 	pkgType := pkgtypeparser(pkg)
 	if pkgType == "1" {
 		err := linuxPackage(pkg)
@@ -112,7 +114,7 @@ func linuxPackage(pkgName string) error {
 
 	}
 
-	fmt.Printf("Successfully processed %s via %s\n", pkgName, pm)
+	slog.Info("Successfully processed %s via %s\n", pkgName, pm)
 	return nil
 }
 
@@ -121,7 +123,7 @@ func linuxPackage(pkgName string) error {
 //--------------------------------------------------------------------------------
 
 func getPm() string {
-	fmt.Println("Analysing the pacakage manager.")
+	slog.Info("Analysing the pacakage manager.")
 	for _, pm := range []string{"apt", "dnf", "pacman", "zypper", "apk", "pkg", "yum"} {
 		if _, err := exec.LookPath(pm); err == nil {
 			return pm
@@ -176,7 +178,7 @@ func urlPkg(fileURL string) error {
 	defer out.Close()
 
 	// 7. Stream the download straight to disk
-	fmt.Printf("Downloading and auto-saving to: %s\n", finalSavePath)
+	slog.Info("Downloading and auto-saving to: ", "path", finalSavePath)
 	_, err = io.Copy(out, resp.Body)
 	return err
 }
