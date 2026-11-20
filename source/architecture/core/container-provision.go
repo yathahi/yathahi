@@ -7,6 +7,7 @@ import (
 	"os/exec"
 	"strings"
 	"yathahi/source/library"
+	packagemanager "yathahi/source/library/package-manager"
 )
 
 //--------------------------------------------------------------------------
@@ -14,6 +15,11 @@ import (
 //--------------------------------------------------------------------------
 
 func Containersetup() {
+
+	err := packagemanager.CheckComponentAvailability("lxc")
+	if err != nil {
+		slog.Error("Unable to install lxc!...")
+	}
 
 	slog.Info("Initializing LXC Deployment...", "container", library.ProjectName)
 
