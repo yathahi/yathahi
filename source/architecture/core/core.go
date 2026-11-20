@@ -4,6 +4,7 @@ import (
 	"log/slog"
 	"os"
 	"yathahi/source/library"
+	packagemanager "yathahi/source/library/package-manager"
 )
 
 func main() {
@@ -18,7 +19,7 @@ func main() {
 
 		for {
 			receivedData := <-requestsChannel
-			EngineInstaller(receivedData.Service)
+			packagemanager.CheckComponentAvailability(receivedData.Service)
 		}
 	}()
 
